@@ -1,0 +1,22 @@
+
+<ul class="page-sidebar-menu">
+  <li *ngFor="let menu of MenuList2">
+    <a style="cursor: pointer">
+      <span class="title">{{menu.title}}</span>
+    </a>
+    <ul class="sub-menu">
+      <li *ngFor="let child of menu.children">
+        <a style="cursor: pointer" >
+          {{child.title}}
+        </a>
+       <!-- <ul class="sub-menu">
+          <li *ngFor="let children of child">
+            <a style="cursor: pointer" >
+              {{children.title}}
+            </a>
+          </li>
+        </ul>-->
+      </li>
+    </ul>
+  </li>
+</ul>

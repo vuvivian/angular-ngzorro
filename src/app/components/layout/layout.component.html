@@ -1,0 +1,17 @@
+<nz-layout class="app-root">
+  <nz-affix>
+    <app-navbar></app-navbar>
+  </nz-affix>
+  <nz-layout>
+      <nz-sider nzWidth="200px" nzTheme="light">
+       <app-menu></app-menu>
+      </nz-sider>
+    <nz-layout class="inner-layout"  class="app-container">
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+      <app-footer></app-footer>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
+
