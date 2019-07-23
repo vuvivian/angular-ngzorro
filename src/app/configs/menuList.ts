@@ -20,37 +20,10 @@ export const MenuList = {
    open: true, // 是否展开
    selected: true, // 是否选中
    disabled: false, // 是否可点击
- }, {
-   level: 1,
-   key: 'database',  // router中的path值
-   title: '结构', // menu中的显示名称
-   icon: 'home', // menu中图标
-   open: false,
-   selected: false,
-   disabled: false,
-   children: [{
-     level: 2,
-     key: 'model',  // router中的path值
-     title: '模型', // menu中的显示名称
-     router: 'database/model', // menu中的跳转路由
-     icon: 'home', // menu中图标
-     component: TableComponent, // 组件
-     selected: false,
-     disabled: false,
-   }, {
-     level: 2,
-     key: 'field',  // router中的path值
-     title: '字段', // menu中的显示名称
-     router: 'database/field', // menu中的跳转路由
-     icon: 'home', // menu中图标
-     component: TableComponent, // 组件
-     selected: false,
-     disabled: false,
-   }]
- }, {
+ },{
    level: 1,
    key: 'demo',  // router中的path值
-   title: 'Demo', // menu中的显示名称
+   title: 'demo', // menu中的显示名称
    icon: 'home', // menu中图标
    open: false,
    selected: false,

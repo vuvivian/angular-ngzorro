@@ -8,9 +8,10 @@
         [nzPaddingLeft]="menu.level * 24"
         [nzDisabled]="menu.disabled"
         [nzSelected]="menu.selected"
+
       >
 <!--    <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>-->
-        <a [routerLink]="'/app/'+menu.router">{{ menu.title }}</a>
+        <a [routerLink]="'/app/'+menu.router" >{{ menu.title | translate}}</a>
       </li>
       <li
         *ngIf="menu.children"

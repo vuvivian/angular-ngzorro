@@ -11,6 +11,7 @@ import {LoginService} from '../../service/login.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import {HttpUtil} from '../../utils/http-factory/http-util';
 import {SeesionStorage} from '../../utils/session-storage/session.storage';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -20,11 +21,13 @@ import {SeesionStorage} from '../../utils/session-storage/session.storage';
 export class NavbarComponent implements OnInit {
   http: any;
   router: any;
+  language: string;
 
   constructor(Http: HttpClient, router: Router, private loginService: LoginService, private message: NzMessageService,
-              private httpUtil: HttpUtil, private sessionStorage: SeesionStorage, ) {
+              private httpUtil: HttpUtil, private sessionStorage: SeesionStorage, private translate: TranslateService ) {
     this.http = Http;
     this.router = router;
+    this.language = '中文';
   }
 
   ngOnInit() {
@@ -39,5 +42,10 @@ export class NavbarComponent implements OnInit {
         this.sessionStorage.remove('userInfo');
       }
     });
+  }
+
+  useLanguage(language: string) {
+    this.translate.use(language);
+    this.language = language === 'en' ? 'English' : '中文';
   }
 }
