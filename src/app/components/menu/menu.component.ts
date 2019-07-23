@@ -14,7 +14,7 @@ import {MenuList} from '../../configs/menuList';
 })
 export class MenuComponent implements OnInit {
   menus = MenuList.menu;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

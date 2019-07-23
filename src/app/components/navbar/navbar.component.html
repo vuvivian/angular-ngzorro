@@ -1,10 +1,18 @@
 <nz-header>
-  <div class="logo">
+  <div class="logo"  [style.width]="isCollapsed ? '80px' : '200px'">
     <i class="logo-icon">
       <img src="../../../assets/images/app.svg" alt="">
     </i>
   </div>
   <ul nz-menu nzTheme="light" nzMode="horizontal" class="header-menu">
+    <li nz-menu-item>
+      <i
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="toggleFold()"
+      ></i>
+    </li>
     <li nz-menu-item>
       <nz-switch [(ngModel)]="switchValue"></nz-switch>
     </li>

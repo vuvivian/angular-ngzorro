@@ -22,15 +22,19 @@ export class NavbarComponent implements OnInit {
   http: any;
   router: any;
   language: string;
+  isCollapsed: boolean;
 
   constructor(Http: HttpClient, router: Router, private loginService: LoginService, private message: NzMessageService,
               private httpUtil: HttpUtil, private sessionStorage: SeesionStorage, private translate: TranslateService ) {
     this.http = Http;
     this.router = router;
     this.language = '中文';
+    this.isCollapsed = false;
   }
 
   ngOnInit() {
+    console.log('aa', this.sessionStorage.get('ng-setting')['isCollapsed']);
+    this.isCollapsed = this.sessionStorage.get('ng-setting')['isCollapsed'];
   }
 
   logout() {
@@ -47,5 +51,16 @@ export class NavbarComponent implements OnInit {
   useLanguage(language: string) {
     this.translate.use(language);
     this.language = language === 'en' ? 'English' : '中文';
+  }
+
+  toggleFold() {
+    this.isCollapsed = !this.isCollapsed;
+    const ngSetting = {
+      isCollapsed: this.isCollapsed
+    };
+    this.sessionStorage.setObject('ng-setting', ngSetting);
+    // const isCollapsed = Boolean(`${this.sessionStorage.get('isCollapsed')}`);
+    // console.log(isCollapsed);
+    // this.sessionStorage.set('isCollapsed', JSON.parse(`${!this.sessionStorage.get('isCollapsed')}`));
   }
 }

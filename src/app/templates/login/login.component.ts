@@ -15,7 +15,6 @@ import { NzMessageService } from 'ng-zorro-antd';
 import {HttpUtil} from '../../utils/http-factory/http-util';
 import {emailValidator} from '../../utils/field-validator/form-validator';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -66,6 +65,10 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['/app/dashboard']);
           this.sessionStorage.set('userInfo', res.result);
+          const ngSetting = {
+            isCollapsed: false
+          };
+          this.sessionStorage.setObject('ng-setting', ngSetting);
         }
       });
     }
