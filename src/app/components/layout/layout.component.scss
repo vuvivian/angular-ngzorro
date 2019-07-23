@@ -6,6 +6,9 @@ nz-content {
 
 .app-root {
   min-height: 100vh;
+  .app-nav-affix {
+    height: 50px !important;
+  }
 }
 
 .app-container {
