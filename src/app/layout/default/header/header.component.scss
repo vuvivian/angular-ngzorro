@@ -1,0 +1,79 @@
+@mixin flexItems($items) {
+  display:flex;
+  align-items:$items ;
+}
+@mixin flexContent($content) {
+  display: flex;
+  justify-content: $content;
+}
+
+@mixin flexIC($i, $c) {
+  display: flex;
+  align-items: $i;
+  justify-content: $c
+}
+
+:host ::ng-deep .ant-layout-header {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  padding: 0;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #1976d2;
+  @include flexItems(center);
+}
+.header-trigger {
+  height: 40px;
+  i {
+    font-size: 20px;
+  }
+  &:hover {
+    height: 40px;
+    background: cornflowerblue;
+    @include flexItems(center);
+    padding: 0 10px;
+  }
+  padding: 0 10px;
+  @include flexItems(center);
+}
+.header-logo {
+  height: 100%;
+  background: #001529;
+  border-bottom: 1px solid #f0f2f5;
+  @include flexContent(center);
+}
+.header-inter {
+  flex-grow: 2;
+  @include flexItems(center);
+  justify-content: space-between;
+  i {
+    font-size: 20px;
+  }
+  a {
+    outline: none;
+    color: #ffffff;
+  }
+  .inter-left {
+    @include flexItems(center);
+  }
+  .inter-right {
+    @include flexItems(center);
+    margin-right: 50px;
+  }
+  .inter-item {
+    padding: 0 20px;
+    height: 40px;
+    @include flexItems(center);
+    &:hover {
+      height: 40px;
+      background: cornflowerblue;
+      @include flexItems(center);
+      padding: 0 20px;
+    }
+  }
+  .inter-search {
+    margin: 0 5px;
+  }
+}

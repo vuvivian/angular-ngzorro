@@ -1,0 +1,16 @@
+<!--<div class="page-loading" *ngIf="isFetching"></div>-->
+<nz-layout class="default-layout">
+  <app-header (nzCollapsed)="launchSidebar()"></app-header>
+  <nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
+      <app-sider [isCollapsed]="isCollapsed"></app-sider>
+    </nz-sider>
+    <nz-layout [ngStyle]="{'margin-left':isCollapsed?'80px':'200px'}" class="layout-container">
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+      <app-footer></app-footer>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
+

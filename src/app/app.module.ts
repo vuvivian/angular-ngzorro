@@ -9,6 +9,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+
 /* app */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,40 +34,16 @@ registerLocaleData(zh);
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
-/* Component */
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { DashboardComponent } from './templates/dashboard/dashboard.component';
-import { Code404Component } from './components/code404/code404.component';
-
-/* page */
-import {NgxEchartsModule} from 'ngx-echarts';
-import { TableComponent } from './templates/examples/table/table.component';
-import { FormComponent } from './templates/examples/form/form.component';
-import { TreeComponent } from './templates/examples/tree/tree.component';
-import { GridComponent } from './templates/examples/grid/grid.component';
-import { LoginComponent } from './templates/login/login.component';
-import { LayoutComponent } from './components/layout/layout.component';
-
 /* service */
 import {LoginService} from './service/login.service';
 
+/*----------------------------------------------------------------------------------*/
+/* 自定义Module */
+import {PageModule} from "./page/page.module";
+import {LayoutModule} from "./layout/layout.module";
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    MenuComponent,
-    DashboardComponent,
-    Code404Component,
-    TableComponent,
-    FormComponent,
-    TreeComponent,
-    GridComponent,
-    LoginComponent,
-    LayoutComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -78,7 +55,6 @@ import {LoginService} from './service/login.service';
     NgZorroAntdModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxEchartsModule,
     // ngx-translate and the loader module
     HttpClientModule,
     TranslateModule.forRoot({
@@ -87,7 +63,10 @@ import {LoginService} from './service/login.service';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    /*-------------自定义模块--------------------*/
+    LayoutModule,
+    PageModule
   ],
   /* ng-zorro-antd national */
   providers: [
