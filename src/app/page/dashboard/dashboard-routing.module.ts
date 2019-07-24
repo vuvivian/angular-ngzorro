@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import {DefaultComponent} from "../../layout/default/default.component";
 
 const routes: Routes = [
-  {path:'',component:DefaultComponent}
+  {path:'',component:DashboardComponent}
 ];
 
 @NgModule({

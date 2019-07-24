@@ -9,9 +9,11 @@
         [nzDisabled]="menu.disabled"
         [nzSelected]="menu.selected"
         [nzMatchRouter] = true
+        [routerLink]="'/default/'+menu.router"
       >
+        {{ menu.title}}
         <!--    <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>-->
-        <a [routerLink]="'/app/'+menu.router" >{{ menu.title}}</a>
+<!--        <a [routerLink]="'/app/'+menu.router" >{{ menu.title}}</a>-->
       </li>
       <li
         *ngIf="menu.children"

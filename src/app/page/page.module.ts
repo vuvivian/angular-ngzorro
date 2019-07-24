@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PageRoutingModule } from './page-routing.module';
 
 
@@ -8,9 +7,8 @@ import { PageRoutingModule } from './page-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    PageRoutingModule,
+    PageRoutingModule
   ],
-  exports:[
-  ]
+  exports:[]
 })
 export class PageModule { }

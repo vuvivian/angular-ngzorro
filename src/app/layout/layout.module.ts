@@ -5,18 +5,20 @@ import { HeaderComponent } from './default/header/header.component';
 import { FooterComponent } from './default/footer/footer.component';
 import {SharedModule} from "../shared/shared.module";
 import { SiderComponent } from './default/sider/sider.component';
+import { VerticalComponent } from './vertical/vertical.component';
 
 
 const COMPONENTS = [
   DefaultComponent,
   HeaderComponent,
   FooterComponent,
-  SiderComponent
+  SiderComponent,
+  VerticalComponent
 ];
 
 @NgModule({
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
   ],
   imports: [
     CommonModule,
