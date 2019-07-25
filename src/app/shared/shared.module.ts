@@ -10,9 +10,11 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DfTableComponent } from './ng-zorro/df-table/df-table.component';
+import { DfAutoCompleteComponent } from './ng-zorro/df-auto-complete/df-auto-complete.component';
 
 const COMPONENTS = [
-  DfTableComponent
+  DfTableComponent,
+  DfAutoCompleteComponent,
 ];
 const SHAREDS = [
   CommonModule,
@@ -26,6 +28,7 @@ const SHAREDS = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
+
   ],
   imports: [
     ...SHAREDS,

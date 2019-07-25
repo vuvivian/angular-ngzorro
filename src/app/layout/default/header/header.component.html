@@ -1,7 +1,7 @@
 <nz-header>
   <div class="header-logo" [ngStyle]="{'width':isCollapsed?'80px':'200px'}">
     <i class="logo-icon">
-      <img src="../../../assets/images/app.svg" alt="">
+      <img src="../../../../assets/images/app.svg" alt="" />
     </i>
   </div>
   <div class="header-trigger">
@@ -9,11 +9,34 @@
   </div>
   <div class="header-inter">
     <div class="inter-left">
-      搜索框
+      <div class="header-search">
+        <app-df-auto-complete ></app-df-auto-complete>
+      </div>
     </div>
     <div class="inter-right">
       <div class="inter-item">
+        <a nz-dropdown [nzDropdownMenu]="menu">
+          {{langulage}}
+          <i nz-icon nzType="caret-down" nzTheme="outline" style="font-size: 12px"></i>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item (click)="changeLanguage('zh')">中文</li>
+            <li nz-menu-item (click)="changeLanguage('en')">English</li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+      <div class="inter-item" (click)="toggleArrows()">
+        <i nz-icon [nzType]="isFullScreen?'arrows-alt':'shrink'" nzTheme="outline"></i>
+      </div>
+      <div class="inter-item">
+        <nz-badge [nzCount]="99" [nzStyle]="">
+          <i nz-icon nzType="bell" nzTheme="outline"></i>
+        </nz-badge>
+      </div>
+      <div class="inter-item">
         <a nz-dropdown [nzDropdownMenu]="userInfo" [nzPlacement]="'bottomCenter'">
+          <span class="user-name">admin</span>
           <img src="../../../../assets/images/avatar.svg" alt="" style="height: 40px">
         </a>
         <nz-dropdown-menu #userInfo="nzDropdownMenu">

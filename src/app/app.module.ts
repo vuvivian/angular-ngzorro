@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 /* angular i18n config */
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
@@ -42,6 +41,7 @@ import {RequestService} from "./core/request/request.service";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+
     /*----ngx-translate and the loader module----*/
     TranslateModule.forRoot({
       loader: {
@@ -69,7 +69,7 @@ import {RequestService} from "./core/request/request.service";
       multi: true
     },
     RequestService,
-    LoginGuard
+    LoginGuard,
   ],
   bootstrap: [AppComponent]
 })

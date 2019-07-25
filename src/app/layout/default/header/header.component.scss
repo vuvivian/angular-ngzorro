@@ -24,14 +24,18 @@
   background-color: #1976d2;
   @include flexItems(center);
 }
+:host ::ng-deep .ant-input-group-wrapper {
+  vertical-align: middle;
+}
 .header-trigger {
   height: 40px;
+  margin-right: 10px;
   i {
     font-size: 20px;
   }
   &:hover {
     height: 40px;
-    background: cornflowerblue;
+    background: rgba(0,0,0,.15);
     @include flexItems(center);
     padding: 0 10px;
   }
@@ -43,6 +47,12 @@
   background: #001529;
   border-bottom: 1px solid #f0f2f5;
   @include flexContent(center);
+  .logo-icon {
+    font-family: cursive;
+    font-weight: bolder;
+    font-size: 22px;
+    color: #fff;
+  }
 }
 .header-inter {
   flex-grow: 2;
@@ -56,6 +66,7 @@
     color: #ffffff;
   }
   .inter-left {
+    margin-left: 20px;
     @include flexItems(center);
   }
   .inter-right {
@@ -68,10 +79,19 @@
     @include flexItems(center);
     &:hover {
       height: 40px;
-      background: cornflowerblue;
+      //background: cornflowerblue;
+      background: rgba(0,0,0,.15);
+      border-radius: 5px;
       @include flexItems(center);
-      padding: 0 20px;
+      padding: 0px 18px;
     }
+  }
+  .header-search {
+    height: 40px;
+    @include flexItems(center);
+  }
+  .user-name {
+    margin-right: 5px;
   }
   .inter-search {
     margin: 0 5px;
