@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MenuList} from '../../../configs/menuList';
-
+import {MenuService} from 'src/app/services/core/menu/menu.service';
+import {MenuList} from '../../../../assets/api/menuList';
+import {MenuInfo} from "../../../interface/menuInfo";
 @Component({
   selector: 'app-sider',
   templateUrl: './sider.component.html',
@@ -8,13 +9,14 @@ import {MenuList} from '../../../configs/menuList';
 })
 export class SiderComponent implements OnInit {
   @Input() isCollapsed;
-  menus;
-  constructor() {
-
+  menus:MenuInfo[];
+  constructor( private menuService: MenuService,) {
+    // this.menus = menuService.getMenus();
+    this.menus = MenuList.menu;
   }
 
   ngOnInit() {
-    this.menus = MenuList.menu
+    console.log(this.menus)
   }
 
 }

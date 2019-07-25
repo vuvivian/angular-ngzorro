@@ -1,0 +1,35 @@
+ [{
+   "level": 1,
+   "key": "dashboard",
+   "title": "首页",
+   "router": "dashboard",
+   "icon": "home",
+   "open": true,
+   "selected": true,
+   "disabled": false
+ },{
+   "level": 1,
+   "key": "example",
+   "title": "example",
+   "icon": "home",
+   "open": false,
+   "selected": false,
+   "disabled": false,
+   "children": [{
+     "level": 2,
+     "key": "exampleTable",
+     "title": "表格",
+     "router": "example/table",
+     "icon": "home",
+     "selected": false,
+     "disabled": false
+   }, {
+     "level": 2,
+     "key": "exampleForm",
+     "title": "表单",
+     "router": "example/form",
+     "icon": "home",
+     "selected": false,
+     "disabled": false
+   }]
+ }]

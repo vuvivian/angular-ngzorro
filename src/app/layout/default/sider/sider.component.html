@@ -11,9 +11,10 @@
         [nzMatchRouter] = true
         [routerLink]="'/default/'+menu.router"
       >
-        {{ menu.title}}
-        <!--    <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>-->
-<!--        <a [routerLink]="'/app/'+menu.router" >{{ menu.title}}</a>-->
+        <span title>
+          <i nz-icon [type]="menu.icon" *ngIf="menu.icon"></i>
+          {{ menu.title}}
+        </span>
       </li>
       <li
         *ngIf="menu.children"
@@ -23,7 +24,6 @@
         [nzTitle]="menu.title"
         [nzIcon]="menu.icon"
         [nzDisabled]="menu.disabled"
-
       >
         <ul>
           <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"></ng-container>

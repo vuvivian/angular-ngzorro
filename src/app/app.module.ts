@@ -3,26 +3,14 @@
  * Date: 2019/07/08
  * Description:
  */
-
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { NgModule } from '@angular/core';
-
-
-/* app */
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-/* providers */
-import { httpInterceptorProviders } from './utils/http-interceptors/index';
-import {SeesionStorage} from './utils/session-storage/session.storage';
-import {LocalStorage} from './utils/session-storage/local.storage';
-import {LoginGuard} from './utils/router-guard/login-guard';
-
-/* ng-zorro-antd */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 /* angular i18n config */
@@ -30,33 +18,31 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
 
+/*----------------------------------------------------------------------------------*/
+/* providers */
+import {LoginGuard} from './core/guard/login-guard';
 /* import ngx-translate and the http loader */
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-
-/* service */
-import {LoginService} from './service/login.service';
-
-/*----------------------------------------------------------------------------------*/
 /* 自定义Module */
 import {PageModule} from "./page/page.module";
 import {LayoutModule} from "./layout/layout.module";
+import {StartupService} from "./core/startup/startup.service";
+import {StartupServiceFactory} from "./core/startup/startup.factory";
+import {BaseInterceptor} from "./core/http/base.interceptor";
+import {RequestService} from "./core/request/request.service";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     BrowserAnimationsModule,
-    /* import HttpClientModule after BrowserModule. */
+    /*-import HttpClientModule after BrowserModule-*/
     HttpClientModule,
-    /* ng-zorro-antd */
-    NgZorroAntdModule,
     ReactiveFormsModule,
     FormsModule,
-    // ngx-translate and the loader module
-    HttpClientModule,
+    /*----ngx-translate and the loader module----*/
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -64,18 +50,25 @@ import {LayoutModule} from "./layout/layout.module";
         deps: [HttpClient]
       }
     }),
-    /*-------------自定义模块--------------------*/
+    /*---------------自定义模块--------------------*/
     LayoutModule,
-    PageModule
+    PageModule,
   ],
-  /* ng-zorro-antd national */
   providers: [
     { provide: NZ_I18N, useValue: zh_CN },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    httpInterceptorProviders,
-    LocalStorage,
-    SeesionStorage,
-    LoginService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: StartupServiceFactory,
+      deps: [StartupService],
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:BaseInterceptor,
+      multi: true
+    },
+    RequestService,
     LoginGuard
   ],
   bootstrap: [AppComponent]

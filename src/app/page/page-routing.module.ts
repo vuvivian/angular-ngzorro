@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {DefaultComponent} from "../layout/default/default.component";
+import {LoginGuard} from "../core/guard/login-guard";
 
 const routes: Routes = [
   {path: '', redirectTo: '/default/dashboard', pathMatch: 'full' },
   {
     path: 'default', // todo 动态加载
+    canActivate: [LoginGuard],
     component:DefaultComponent, // todo 动态加载
     children:[
       {path: '', redirectTo: '/default/dashboard', pathMatch: 'full' },

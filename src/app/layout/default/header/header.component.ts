@@ -7,6 +7,8 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {fromEvent} from "rxjs";
+import {LoginService} from "../../../services/account/login/login.service";
+import {AuthService} from "../../../services/account/auth/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -14,16 +16,11 @@ import {fromEvent} from "rxjs";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   resize = document.body.clientWidth;
   isCollapsed = false;
   @Output() nzCollapsed = new EventEmitter<void>();
-  constructor(
-    // @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
-               private router: Router
-  ) {
 
-  }
+  constructor(private router: Router,private loginService: LoginService,private authService: AuthService) {}
 
   ngOnInit() {
     // 监听浏览器的变化
@@ -38,9 +35,9 @@ export class HeaderComponent implements OnInit {
     this.nzCollapsed.emit();
   }
 
-  // todo
   logout() {
-    // this.tokenService.clear();
-    // this.router.navigateByUrl('passport/login');
+    this.loginService.logout({});
+    this.authService.cancleAccess();
+    this.router.navigateByUrl('/login');
   }
 }
