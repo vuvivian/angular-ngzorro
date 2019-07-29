@@ -30,6 +30,7 @@ import {StartupService} from "./core/startup/startup.service";
 import {StartupServiceFactory} from "./core/startup/startup.factory";
 import {BaseInterceptor} from "./core/http/base.interceptor";
 import {RequestService} from "./core/request/request.service";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,7 +42,7 @@ import {RequestService} from "./core/request/request.service";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-
+    SharedModule,
     /*----ngx-translate and the loader module----*/
     TranslateModule.forRoot({
       loader: {

@@ -13,4 +13,19 @@
     </nz-layout>
   </nz-layout>
 </nz-layout>
-
+<nz-affix  style="position: absolute; top:20%; right:0px">
+  <div style="background: #1976d2; padding: 5px;border-radius: 10px" (click)="open()">
+    <img class="rotation img" src="../../../assets/images/setup.svg" alt="set">
+  </div>
+</nz-affix>
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="Basic Setting"
+  (nzOnClose)="close()"
+>
+  <p>布局设置</p>
+  <p>主题设置</p>
+  <p>其他设置</p>
+</nz-drawer>

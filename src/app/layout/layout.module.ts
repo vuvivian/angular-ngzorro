@@ -7,7 +7,6 @@ import {SharedModule} from "../shared/shared.module";
 import { SiderComponent } from './default/sider/sider.component';
 import { VerticalComponent } from './vertical/vertical.component';
 
-
 const COMPONENTS = [
   DefaultComponent,
   HeaderComponent,
@@ -22,7 +21,7 @@ const COMPONENTS = [
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
   ],
   exports:[
     ...COMPONENTS

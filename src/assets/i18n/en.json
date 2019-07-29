@@ -3,7 +3,8 @@
   "表格": "table",
   "表单": "form",
   "个人信息": "userInfo",
-  "登出": "Logout",
-  "切换账户": "change account"
+  "登出": "logout",
+  "切换账户": "change account",
+  "基础设置": "Basic Setting"
 }
 

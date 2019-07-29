@@ -5,10 +5,12 @@ import { ExampleRoutingModule } from './example-routing.module';
 import { TableComponent } from './table/table.component';
 import { FormComponent } from './form/form.component';
 import {SharedModule} from "../../shared/shared.module";
+import { TreeComponent } from './tree/tree.component';
+import { TableTreeComponent } from './table-tree/table-tree.component';
 
 
 @NgModule({
-  declarations: [TableComponent, FormComponent],
+  declarations: [TableComponent, FormComponent, TreeComponent, TableTreeComponent],
   imports: [
     CommonModule,
     SharedModule,

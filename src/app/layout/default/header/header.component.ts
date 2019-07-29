@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 import {fromEvent} from "rxjs";
 import {LoginService} from "../../../services/account/login/login.service";
 import {AuthService} from "../../../services/account/auth/auth.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
   langulage = '中文';
   @Output() nzCollapsed = new EventEmitter<void>();
 
-  constructor(private router: Router,private loginService: LoginService,private authService: AuthService) {}
+  constructor(private router: Router,private loginService: LoginService,private authService: AuthService,private translate:TranslateService) {}
 
   ngOnInit() {
     // 监听浏览器的变化
@@ -86,7 +87,8 @@ export class HeaderComponent implements OnInit {
   }
 
   changeLanguage(language:string) {
-    this.langulage = language==='zh'?'中文':'English'
+    this.langulage = language==='zh'?'中文':'English';
+    this.translate.use(language);
   }
   logout() {
     this.loginService.logout({});
