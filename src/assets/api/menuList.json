@@ -31,5 +31,13 @@
      "icon": "home",
      "selected": false,
      "disabled": false
+   }, {
+     "level": 2,
+     "key": "examplePagination",
+     "title": "分页",
+     "router": "example/pagination",
+     "icon": "home",
+     "selected": false,
+     "disabled": false
    }]
  }]

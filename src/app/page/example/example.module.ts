@@ -7,10 +7,11 @@ import { FormComponent } from './form/form.component';
 import {SharedModule} from "../../shared/shared.module";
 import { TreeComponent } from './tree/tree.component';
 import { TableTreeComponent } from './table-tree/table-tree.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 @NgModule({
-  declarations: [TableComponent, FormComponent, TreeComponent, TableTreeComponent],
+  declarations: [TableComponent, FormComponent, TreeComponent, TableTreeComponent, PaginationComponent],
   imports: [
     CommonModule,
     SharedModule,
