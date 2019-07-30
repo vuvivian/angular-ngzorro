@@ -1,3 +1,57 @@
-<div>
-  首页
+<div nz-row class="dashboard">
+  <div nz-col nzSpan="20" class="dashboard-left">
+    <div nz-row class="dashboard-left-title">
+      <div nz-col nzSpan="16">
+        <p class="dashboard-title">首页</p>
+        <p class="title-descript">欢迎</p>
+      </div>
+      <div nz-col nzSpan="4">
+        <nz-statistic [nzValue]="1949101 | number" [nzTitle]="'Active Users'"></nz-statistic>
+      </div>
+      <div nz-col nzSpan="4">
+        <nz-statistic [nzValue]="2019.111 | number: '1.0-2'" [nzTitle]="'Account Balance (CNY)'"></nz-statistic>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <div echarts [options]="chartOption" class="demo-chart"></div>
+      </div>
+      <div nz-col nzSpan="12">
+        <div echarts [options]="pieOptions" class="demo-chart"></div>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <div echarts [options]="lineOptions" class="demo-chart"></div>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-list [nzDataSource]="data" nzBordered [nzHeader]="'Header'" [nzFooter]="'Footer'" [nzRenderItem]="defaultItem">
+          <ng-template #defaultItem let-item>
+            <nz-list-item>
+              <span class="ant-typography"><mark>[ITEM]</mark></span>
+              {{ item }}
+            </nz-list-item>
+          </ng-template>
+        </nz-list>
+      </div>
+    </div>
+  </div>
+  <div nz-col nzSpan="4" class="dashboard-right">
+    <p>Recent Activity</p>
+    <nz-timeline>
+      <nz-timeline-item nzColor="green">Create a services site 2015-09-01</nz-timeline-item>
+      <nz-timeline-item nzColor="green">Solve initial network problems 2015-09-01</nz-timeline-item>
+      <nz-timeline-item nzColor="red">
+        <p>Solve initial network problems 1</p>
+        <p>Solve initial network problems 2</p>
+        <p>Solve initial network problems 3 2015-09-01</p>
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <p>Technical testing 1</p>
+        <p>Technical testing 2</p>
+        <p>Technical testing 3 2015-09-01</p>
+      </nz-timeline-item>
+    </nz-timeline>
+  </div>
 </div>
+

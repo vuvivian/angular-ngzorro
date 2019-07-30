@@ -1,7 +1,25 @@
-.demo-chart {
-  background: #ffffff;
-  margin: 5px;
-}
-.demo-chart1{
-  height: 400px;
+
+.dashboard-left {
+  height: 100%;
+  .dashboard-left-title {
+    height: 80px;
+    padding: 15px;
+    background: #f6f8f8;
+    border-bottom: 1px solid #dee5e7;
+    .dashboard-title {
+      color: #000;
+      font-size: 24px;
+      font-family: inherit;
+      margin: 0;
+    }
+    .title-descript {
+      font-size: 12px;
+    }
+    .demo-chart {
+      height: 80px;
+      width: 200px;
+      display: inline-block;
+      vertical-align:middle;
+    }
+  }
 }
