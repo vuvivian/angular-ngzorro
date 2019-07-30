@@ -1,0 +1,9 @@
+<div class="df-pagination">
+  <nz-pagination
+    [(nzPageIndex)]="currentPage"
+    [nzTotal]="paginationParams?.total"
+    (nzPageIndexChange)="pageIndexChange()"
+    [nzPageSize]="paginationParams?.pageSize"
+  ></nz-pagination>
+  <label>共{{paginationParams?.total}}条数据</label>
+</div>

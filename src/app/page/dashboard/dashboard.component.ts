@@ -49,8 +49,9 @@ export class DashboardComponent implements OnInit {
   // @ts-ignore
   // @ts-ignore
   // @ts-ignore
+  // @ts-ignore
   pieOptions: EChartOption = {
-    color: ['#3398DB'],
+    color: ['rgb(131,249,103)', '#FBFE27', '#FE5050', '#1DB7E5'],
     title: {
       text: '南丁格尔玫瑰图',
       left: 'center',
@@ -65,20 +66,20 @@ export class DashboardComponent implements OnInit {
       formatter: "{b} : {c} ({d}%)"
     },
 
-    visualMap: {
-      show: false,
+    visualMap:[ {
+      show:false,
       min: 500,
       max: 600,
       inRange: {
         //colorLightness: [0, 1]
       }
-    },
+    }],
     "series": [{
       name: '访问来源',
       type: 'pie',
       radius: '50%',
       center: ['50%', '50%'],
-      color: ['rgb(131,249,103)', '#FBFE27', '#FE5050', '#1DB7E5'],
+
       data: [{
         value: 285,
         name: '黑名单查询'
@@ -159,9 +160,7 @@ export class DashboardComponent implements OnInit {
         },
       },
       axisLabel: { //坐标轴刻度标签的相关设置
-        textStyle: {
-          color: '#6a9cd5',
-        },
+
       },
       axisTick: { show: true,},//刻度点数轴
       data: ['1日', '2日', '3日', '4日', '5日', '6日', '7日','8日','9日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日'],
@@ -185,9 +184,6 @@ export class DashboardComponent implements OnInit {
       },
       axisLabel: {//y轴的标签相关设置
         formatter: "{value} %",
-        textStyle: {
-          color: '#6a9cd5',
-        },
       },
       axisTick: { show: true,},  //刻度点数轴
     }],

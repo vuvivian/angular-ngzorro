@@ -12,13 +12,12 @@ import {TranslateModule} from "@ngx-translate/core";
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DfTableComponent } from './ng-zorro/df-table/df-table.component';
 import { DfAutoCompleteComponent } from './ng-zorro/df-auto-complete/df-auto-complete.component';
-import { DeFormComponent } from './ng-zorro/de-form/de-form.component';
-import { DeTableTreeComponent } from './ng-zorro/de-table-tree/de-table-tree.component';
-import { DeTreeComponent } from './ng-zorro/de-tree/de-tree.component';
+import { DfPaginationComponent } from './ng-zorro/df-pagination/df-pagination.component';
 
 const COMPONENTS = [
   DfTableComponent,
   DfAutoCompleteComponent,
+  DfPaginationComponent,
 ];
 const SHAREDS = [
   CommonModule,
@@ -27,15 +26,12 @@ const SHAREDS = [
   ReactiveFormsModule,
   NgZorroAntdModule,
   NgxEchartsModule,
-  TranslateModule
+  TranslateModule,
 ];
 
 @NgModule({
   declarations: [
     ...COMPONENTS,
-    DeFormComponent,
-    DeTableTreeComponent,
-    DeTreeComponent,
 
   ],
   imports: [

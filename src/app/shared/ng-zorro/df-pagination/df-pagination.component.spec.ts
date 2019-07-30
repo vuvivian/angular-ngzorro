@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeTableTreeComponent } from './de-table-tree.component';
+import { DfPaginationComponent } from './df-pagination.component';
 
-describe('DeTableTreeComponent', () => {
-  let component: DeTableTreeComponent;
-  let fixture: ComponentFixture<DeTableTreeComponent>;
+describe('DfPaginationComponent', () => {
+  let component: DfPaginationComponent;
+  let fixture: ComponentFixture<DfPaginationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeTableTreeComponent ]
+      declarations: [ DfPaginationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeTableTreeComponent);
+    fixture = TestBed.createComponent(DfPaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
