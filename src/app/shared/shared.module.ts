@@ -13,11 +13,13 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { DfTableComponent } from './ng-zorro/df-table/df-table.component';
 import { DfAutoCompleteComponent } from './ng-zorro/df-auto-complete/df-auto-complete.component';
 import { DfPaginationComponent } from './ng-zorro/df-pagination/df-pagination.component';
+import { DfSelectFormComponent } from './ng-zorro/df-select-form/df-select-form.component';
 
 const COMPONENTS = [
   DfTableComponent,
   DfAutoCompleteComponent,
   DfPaginationComponent,
+  DfSelectFormComponent,
 ];
 const SHAREDS = [
   CommonModule,
@@ -32,7 +34,6 @@ const SHAREDS = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
-
   ],
   imports: [
     ...SHAREDS,

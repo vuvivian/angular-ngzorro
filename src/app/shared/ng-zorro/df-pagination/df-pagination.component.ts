@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/29
+ * Description:分页组件封装
+ */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({

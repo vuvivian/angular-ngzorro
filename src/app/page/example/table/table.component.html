@@ -1,2 +1,50 @@
+<div class="example-table">
+  <div class="example-header">
+    <div nz-row class="header-row">
+      <div nz-col nzSpan="6">
+        标题：<nz-switch [(ngModel)]="switchTitle" nzCheckedChildren="开" nzUnCheckedChildren="关" (click)="clickSwitch('title')"></nz-switch>
+      </div>
+      <div nz-col nzSpan="6">
+        尾部：<nz-switch [(ngModel)]="switchFooter" nzCheckedChildren="开" nzUnCheckedChildren="关" (click)="clickSwitch('footer')"></nz-switch>
+      </div>
+      <div nz-col nzSpan="6">
+        边框：<nz-switch [(ngModel)]="switchBorder" nzCheckedChildren="开" nzUnCheckedChildren="关" (click)="clickSwitch('bordered')"></nz-switch>
+      </div>
+      <div nz-col nzSpan="6">
+        是否加载：<nz-switch [(ngModel)]="switchLoading" nzCheckedChildren="开" nzUnCheckedChildren="关" (click)="clickSwitch('loading')"></nz-switch>
+      </div>
+    </div>
+    <div nz-row class="header-row">
 
+      <div nz-col nzSpan="6">
+        复选：<nz-switch [(ngModel)]="switchChecked" nzCheckedChildren="开" nzUnCheckedChildren="关" (click)="clickSwitch('checked')"></nz-switch>
+      </div>
+        <div nz-col nzSpan="6">
+          单选：<nz-switch [(ngModel)]="switchOperation" nzCheckedChildren="开" nzUnCheckedChildren="关" (click)="clickSwitch('operation')"></nz-switch>
+        </div>
+      <div nz-col nzSpan="6">
+        是否添加分页：<nz-switch [(ngModel)]="switchPagination" nzCheckedChildren="开" nzUnCheckedChildren="关" (click)="clickSwitch('pagination')"></nz-switch>
+      </div>
+      <div nz-col nzSpan="6">
+        大小：
+        <nz-radio-group [(ngModel)]="sizeValue" (ngModelChange)="changeSize($event)">
+          <label nz-radio nzValue="middle">middle</label>
+          <label nz-radio nzValue="small">small</label>
+          <label nz-radio nzValue="default">default</label>
+        </nz-radio-group>
+    </div>
+  </div>
+  </div>
+  <div class="example-body">
+    <app-df-table
+      [tableInfo]="tableInfo"
+      (checked)="getCheckedId($event)"
+      (page)="getPage($event)"
+      (checkedSingle)="checkedSingle($event)"
+      (delete)="delete($event)"
+      (editData)="edit($event)"
+    >
+    </app-df-table>
+  </div>
+</div>
 

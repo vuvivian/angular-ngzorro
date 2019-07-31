@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/25
+ * Description:
+ */
 import { Injectable } from '@angular/core';
 import {MenuService} from "../../services/core/menu/menu.service";
 import {AppInfo} from "../../interface/appInfo";

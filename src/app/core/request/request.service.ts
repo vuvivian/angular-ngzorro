@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/25
+ * Description:
+ */
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";

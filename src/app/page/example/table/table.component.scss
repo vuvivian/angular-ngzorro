@@ -1,0 +1,15 @@
+.example-table {
+  padding: 20px;
+  .example-header {
+    padding: 20px 30px;
+    background: #ffffff;
+    .header-row {
+      margin: 20px;
+    }
+  }
+  .example-body {
+    margin-top: 10px;
+    padding: 20px;
+    background: #ffffff;
+  }
+}

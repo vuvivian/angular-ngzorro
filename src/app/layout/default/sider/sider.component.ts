@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/25
+ * Description:
+ */
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuService} from 'src/app/services/core/menu/menu.service';
 import {MenuList} from '../../../../assets/api/menuList';

@@ -1,47 +1,68 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/08
+ * Description:table组件封装
+ */
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
 @Component({
   selector: 'app-df-table',
   templateUrl: './df-table.component.html',
   styleUrls: ['./df-table.component.scss']
 })
-export class DfTableComponent implements OnInit,OnChanges {
-  constructor() { }
-  allChecked = false;
-  dataChecked = [];
-  @Input() tableDatas;
+export class DfTableComponent implements OnInit, OnChanges {
+  isAllDataChecked: boolean;
+  dataChecked: checkedItem[];
+  @Input() tableInfo;
   @Output() checked = new EventEmitter<object>();
   @Output() checkedSingle = new EventEmitter<object>();
-  @Output() switch = new EventEmitter<object>();
   @Output() delete = new EventEmitter<object>();
   @Output() editData = new EventEmitter<object>();
   @Output() page = new EventEmitter<number>();
-  ngOnInit() {
+
+  constructor() {
+    this.isAllDataChecked = false;
   }
+
   ngOnChanges() {
-    if (this.tableDatas.checked || this.tableDatas.checkedSingle) {
+    if (this.tableInfo.checked || this.tableInfo.checkedSingle) {
       this.dataChecked = [];
-      const lth = this.tableDatas.itemLength;
-      for (let i = 0; i < lth; i++) {
-        this.dataChecked.push({ checked: false, id: i });
+      const totalNum = this.tableInfo.total;
+      for (let i = 0; i < totalNum; i++) {
+        this.dataChecked.push({checked: false, id: i});
       }
     }
   }
-  refreshStatus(i): void {
-    this.allChecked = this.dataChecked.every(e => e.checked === true);
+
+  ngOnInit(): void {}
+
+  // 是否全选
+  checkAll(): void {
+    if(this.isAllDataChecked ){
+      this.dataChecked.forEach(e => {
+        e.checked = true;
+      });
+    } else {
+      this.dataChecked.forEach(e => {
+        e.checked = false;
+      });
+    }
     this.checkEmit();
   }
+
+  // 每行的复选框状态变更
+  refreshStatus(i): void {
+    this.isAllDataChecked = this.dataChecked.every(e => e.checked === true);
+    this.checkEmit();
+  }
+
+  // 单选框状态变更
   refreSingle(i) {
     this.dataChecked.filter(e => e.id !== i)
       .forEach(_e => _e.checked = false);
     this.checkedSingle.emit(i);
   }
-  checkAll(): void {
-    this.dataChecked.forEach(e => {
-      e.checked = !e.checked;
-    });
-    this.checkEmit();
-  }
+
   checkEmit() {
     const ids = [];
     if (this.dataChecked.some(e => e.checked) === true) {
@@ -52,20 +73,21 @@ export class DfTableComponent implements OnInit,OnChanges {
     }
     this.checked.emit(ids);
   }
-  changeSwitch(e) {
-    this.switch.emit(e);
+
+  // 编辑
+  edit(data) {
+    this.editData.emit(data);
   }
-  edit(e) {
-    this.editData.emit(e);
-  }
+
+  // 删除确认
   confirm(e) {
     this.delete.emit(e);
   }
-  cancel() {
 
-  }
-  refreshData($event) {
-    console.log($event)
-    this.page.emit($event);
-  }
+  cancel() {}
+}
+
+export interface checkedItem {
+  checked?: boolean;
+  id?: any
 }

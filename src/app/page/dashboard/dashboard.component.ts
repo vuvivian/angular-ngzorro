@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/29
+ * Description:
+ */
 import { Component, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
 

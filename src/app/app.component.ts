@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/05
+ * Description:
+ */
 import { Component } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 

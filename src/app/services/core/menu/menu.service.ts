@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/08
+ * Description:
+ */
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {MenuInfo} from "../../../interface/menuInfo";

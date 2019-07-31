@@ -17,22 +17,36 @@
  * pageSize：每页数据
  * pageIndex：当前页
  */
+import {DfPagination} from "./dfPagination";
+
 export interface DfTable {
-  itemLength?: number;
-  title?: string;
-  footer?: string;
-  loading?: boolean;
-  bordered?: boolean;
-  checked?: boolean;
-  checkedSingle?: boolean;
-  dataTh?: any;
-  dataSet?: any;
-  tdItem?: any;
-  switch?: boolean;
-  size: string;
-  total?: number;
-  switchName?: string;
+  // itemLength?: number;
+  // switch?: boolean;
+  // switchName?: string;
+  /** 列定义 */
+  column?: any;
+  /** 数据源 */
+  dataSource?: any;
+  /** 是否开启分页 */
   pagination?: boolean;
-  pageSize?: number;
-  pageIndex?: number;
+  /** 分页参数 */
+  pageParams?: DfPagination;
+  /** 表格标题 */
+  title?: string
+  /** 表格尾部 */
+  footer?: string;
+  /** 是否显示边框 */
+  bordered?: boolean;
+  /** 是否显示加载中 */
+  loading?: boolean;
+  /** 大小  */
+  size?: string;
+  /** 多选  */
+  checked?: boolean;
+  /** 单选  */
+  checkedSingle?: boolean;
+  /** 总条数  分页/复选用  */
+  total?: number;
+  /** 操作列 */
+  operation?: boolean
 }

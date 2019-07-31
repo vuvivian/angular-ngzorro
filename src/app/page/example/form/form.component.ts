@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/31
+ * Description:
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

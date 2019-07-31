@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/08
+ * Description:
+ */
 import { Injectable } from '@angular/core';
 import {RequestService} from "../../../core/request/request.service";
 import {Observable} from "rxjs";
