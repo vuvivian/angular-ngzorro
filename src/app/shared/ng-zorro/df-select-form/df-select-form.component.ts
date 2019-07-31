@@ -1,3 +1,8 @@
+/**
+ * Author:wangjuan04@inspur.com
+ * Date: 2019/07/08
+ * Description:查询form组件封装
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

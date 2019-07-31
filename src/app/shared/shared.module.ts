@@ -14,12 +14,14 @@ import { DfTableComponent } from './ng-zorro/df-table/df-table.component';
 import { DfAutoCompleteComponent } from './ng-zorro/df-auto-complete/df-auto-complete.component';
 import { DfPaginationComponent } from './ng-zorro/df-pagination/df-pagination.component';
 import { DfSelectFormComponent } from './ng-zorro/df-select-form/df-select-form.component';
+import { DfModalComponent } from './ng-zorro/df-modal/df-modal.component';
 
 const COMPONENTS = [
   DfTableComponent,
   DfAutoCompleteComponent,
   DfPaginationComponent,
   DfSelectFormComponent,
+  DfModalComponent,
 ];
 const SHAREDS = [
   CommonModule,

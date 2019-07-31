@@ -48,5 +48,5 @@ export interface DfTable {
   /** 总条数  分页/复选用  */
   total?: number;
   /** 操作列 */
-  operation?: boolean
+  showAction?: boolean
 }

@@ -1,0 +1,8 @@
+<nz-modal
+  [(nzVisible)]="modalInfo?. isVisible"
+  [nzTitle] = "modalInfo?. title"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-content></ng-content>
+</nz-modal>

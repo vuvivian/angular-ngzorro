@@ -26,10 +26,12 @@ export class TableComponent implements OnInit {
     column:[
       {
       key:"name",
-      title:"姓名"
+      title:"姓名",
+        showFilter:true,
     },{
       key:"age",
-      title:"年龄"
+      title:"年龄",
+        showSort:true,
     },{
       key:"sex",
       title:"性别"
@@ -62,7 +64,7 @@ export class TableComponent implements OnInit {
     size: 'default',
     // checkedSingle:true,
     checked:true,
-    operation: true
+    showAction: true
   };
 
   ngOnInit(): void {}
@@ -113,7 +115,7 @@ export class TableComponent implements OnInit {
         this.tableInfo.pagination = this.switchPagination;
         break;
       case 'operation':
-        this.tableInfo.operation = this.switchOperation;
+        this.tableInfo.showAction = this.switchOperation;
       default:
         break;
     }

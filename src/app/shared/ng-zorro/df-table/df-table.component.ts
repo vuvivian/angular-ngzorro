@@ -13,12 +13,15 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 export class DfTableComponent implements OnInit, OnChanges {
   isAllDataChecked: boolean;
   dataChecked: checkedItem[];
+  dwData={};
   @Input() tableInfo;
   @Output() checked = new EventEmitter<object>();
   @Output() checkedSingle = new EventEmitter<object>();
   @Output() delete = new EventEmitter<object>();
   @Output() editData = new EventEmitter<object>();
   @Output() page = new EventEmitter<number>();
+  @Output() dwTables = new EventEmitter<object>();
+  @Output() sortData = new EventEmitter<object>();
 
   constructor() {
     this.isAllDataChecked = false;
@@ -85,6 +88,21 @@ export class DfTableComponent implements OnInit, OnChanges {
   }
 
   cancel() {}
+  /**过滤内容 */
+  filter(listOfSearchName: string[]): void {
+    this.dwData['listOfSearchName'] = listOfSearchName;
+    this.dwTables.emit(this.dwData);
+  }
+  /**排序字段 */
+  sort(sortName: string, value: string): void {
+    this.dwData['sortName'] = sortName;
+    this.dwData['sortValue'] = value;
+    this.dwTables.emit(this.dwData);
+  }
+  /**修改状态 */
+  sortChange(sortName: string, value: string): void {
+    this.sortData.emit({ 'name': sortName, 'value': value });
+  }
 }
 
 export interface checkedItem {

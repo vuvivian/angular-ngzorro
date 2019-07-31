@@ -12,8 +12,17 @@
     <thead>
     <tr>
       <th *ngIf="tableInfo.checked" nzShowCheckbox [(nzChecked)]="isAllDataChecked" (nzCheckedChange)="checkAll()"></th>
-      <th *ngFor="let col of tableInfo.column; let i = index">{{col.title}}</th>
-      <th *ngIf="tableInfo?.operation"> 操作 </th>
+<!--      [nzShowFilter]="col?.showFilter"-->
+<!--      [nzShowSort]="col?.showSort"-->
+<!--      [nzFilters]="col?.showFilterList"-->
+<!--      nzSortKey="col?.sortKey"-->
+<!--      (nzFilterChange)="filter($event)"-->
+<!--      (nzSortChange)="sort(col?.sortKey,$event)"-->
+<!--      [nzSort]="tableInfo.sortMap[col.sort]"-->
+      <th
+        *ngFor="let col of tableInfo.column;let i = index"
+      >{{col.title}}</th>
+      <th *ngIf="tableInfo?.showAction"> 操作 </th>
     </tr>
     </thead>
     <tbody>
@@ -23,7 +32,7 @@
       <ng-container *ngFor="let col of tableInfo.column">
         <td>{{item[col?.key]}}</td>
       </ng-container>
-      <td *ngIf="tableInfo?.operation">
+      <td *ngIf="tableInfo?.showAction">
         <button nz-button nzType="primary" nzGhost (click)="edit(item)">编辑</button>
         <nz-divider nzType="vertical"></nz-divider>
         <button nz-button nzType="danger" nzGhost nz-popconfirm nzTitle="确认删除吗?" (nzOnConfirm)="confirm(item)"
