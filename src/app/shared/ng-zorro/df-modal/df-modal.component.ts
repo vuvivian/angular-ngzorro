@@ -12,7 +12,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 
 export class DfModalComponent implements OnInit {
-
   @Input() modalInfo;
   @Output() modelVisible = new EventEmitter<string>();
 

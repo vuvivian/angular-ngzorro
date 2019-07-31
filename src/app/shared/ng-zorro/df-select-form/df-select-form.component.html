@@ -1,1 +1,120 @@
-<p>df-select-form works!</p>
+<form nz-form [formGroup]="validateForm" class="ant-advanced-search-form">
+  <div nz-row [nzGutter]="24">
+    <div nz-col *ngFor="let item of searchInfo.senior" [hidden]="!item.show" [nzSpan]="item.colSpan">
+      <!--输入框 Input-->
+      <nz-form-item nzFlex *ngIf="item.component === 'Input'">
+        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            [placeholder]="'请输入' + item.queryTitle"
+            [formControlName]="item.queryField"
+            [attr.id]="item.queryField"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <!--数字输入框 InputNumber-->
+      <nz-form-item nzFlex *ngIf="item.component === 'InputNumber'">
+        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <nz-input-number
+            [(ngModel)]="demoValue"
+            [ngModelOptions]="{standalone: true}"
+            [ngModelOptions]
+            [nzMin]="1"
+            [nzMax]="10"
+            [nzStep]="1"
+          ></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+      <!--日期选择 DatePicker-->
+      <nz-form-item nzFlex *ngIf="item.component === 'DatePicker'">
+        <nz-form-label [nzFor]="item.queryField" >{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <nz-date-picker name="date-picker-success"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <!--日期范围选择 DateRange-->
+      <nz-form-item nzFlex *ngIf="item.component === 'DateRange'">
+        <nz-form-label [nzFor]="item.queryField" style="outline: #3e98db">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <nz-range-picker [nzFormat]="dateFormat"></nz-range-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <!--单选 Radio-->
+      <nz-form-item nzFlex *ngIf="item.component === 'Radio'">
+        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <nz-radio-group [(ngModel)]="radioValue" [ngModelOptions]="{standalone: true}">
+            <label nz-radio nzValue="A">A</label>
+            <label nz-radio nzValue="B">B</label>
+            <label nz-radio nzValue="C">C</label>
+            <label nz-radio nzValue="D">D</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <!--下拉框 Select-->
+      <nz-form-item nzFlex *ngIf="item.component === 'Select'">
+        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            style="width: 120px;"
+            [(ngModel)]="selectedValue"
+            [ngModelOptions]="{standalone: true}"
+            nzAllowClear
+            [nzPlaceHolder]="'请输入' + item.queryTitle"
+          >
+            <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+            <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+            <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <!--多选 Select-Multiple-->
+      <nz-form-item nzFlex *ngIf="item.component === 'select-Multiple'">
+        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <nz-select
+            [nzMaxTagCount]="3"
+            [nzMaxTagPlaceholder]="tagPlaceHolder"
+            style="width: 200px"
+            nzMode="multiple"
+            [nzPlaceHolder]="'请选择' + item.queryTitle"
+            [(ngModel)]="listOfSelectedValue"
+            [ngModelOptions]="{standalone: true}"
+          >
+            <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+          </nz-select>
+          <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <!--复选框 CheckBox-->
+      <nz-form-item nzFlex *ngIf="item.component === 'CheckBox'">
+        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <label nz-checkbox nzValue="B">B</label>
+        </nz-form-control>
+      </nz-form-item>
+      <!--级联选择 Cascader-->
+      <nz-form-item nzFlex *ngIf="item.component === 'Cascader'">
+        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control>
+          <nz-cascader [nzOptions]="nzOptions" (nzChange)="onChanges($event)" [nzPlaceHolder]="'请选择' + item.queryTitle"> </nz-cascader>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col [nzSpan]="24" class="search-area">
+      <button nz-button [nzType]="'primary'">查询</button>
+      <button nz-button (click)="resetForm()">重置</button>
+      <a class="collapse" (click)="toggleCollapse()">
+        折叠
+        <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
+      </a>
+    </div>
+  </div>
+</form>
+<div class="search-result-list">
+  Search Result List
+</div>

@@ -1,4 +1,4 @@
-export interface InfoModel {
+export interface DfModal {
   isVisible?: boolean;
   title?: string;
 }
