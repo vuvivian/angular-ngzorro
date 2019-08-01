@@ -45,6 +45,14 @@ export const MenuList = {
      "icon": "carry-out",
      "selected": false,
      "disabled": false
+   }, {
+     "level": 2,
+     "key": "exampleTree",
+     "title": "树",
+     "router": "example/tree",
+     "icon": "carry-out",
+     "selected": false,
+     "disabled": false
    }]
  }],
  // others: [{

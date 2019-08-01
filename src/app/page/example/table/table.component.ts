@@ -125,7 +125,7 @@ export class TableComponent implements OnInit {
     this.tableInfo.size = e
   }
   getCheckedId(e): void{
-    console.log(e)
+    console.log('getCheckedId',e)
   }
   getPage(e): void{
     console.log(e)

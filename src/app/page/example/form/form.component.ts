@@ -6,7 +6,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DfModal} from "../../../interface/dfModal";
 
-
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -23,11 +22,16 @@ export class FormComponent implements OnInit {
         queryTitle: '日期',
         queryField: 'createTime',
         component: 'DatePicker', // 日期选择框
+        required:true,
+        errorTip:'请选择日期'
       },
       {
         queryTitle: '输入框',
         queryField: 'officephone',
         component: 'Input', // 输入框
+        defaultValue: '测试',
+        required:true,
+        errorTip:'请输入'
       },
       {
         queryTitle: '选择',
@@ -109,9 +113,26 @@ export class FormComponent implements OnInit {
         componentData: [{ value: 'boy', title: '男' }, { value: 'girl', title: '女' }],
       },]
   };
+  searchParam = null;
+  searchResult = null;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  /* 查询 */
+  search($event):void{
+    this.searchParam = JSON.stringify($event);
+    this.searchResult = '查询成功'
+  }
+  /* 重置 */
+  clear():void {
+    this.searchParam = null;
+    this.searchResult = '重置成功'
   }
 
+  /* 监听 */
+  watch(e): void{
+    this.searchParam = e;
+    this.searchResult = '表单变更'
+  }
 }

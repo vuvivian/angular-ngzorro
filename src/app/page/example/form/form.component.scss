@@ -1,0 +1,19 @@
+.search-result-list {
+  margin-top: 16px;
+  border: 1px dashed #e9e9e9;
+  border-radius: 6px;
+  background-color: #fafafa;
+  height: 200px;
+  text-align: center;
+  //padding-top: 80px;
+  .search-param {
+    background: burlywood;
+    height: 100%;
+    word-break:break-all;
+  }
+
+  .search-result {
+    background: #3e98db;
+    height: 100%;
+  }
+}

@@ -3,55 +3,65 @@
     <div nz-col *ngFor="let item of searchInfo.senior" [hidden]="item.show?!item.show:false" [nzSpan]="item.colSpan?item.colSpan:4">
       <!--输入框 Input-->
       <nz-form-item nzFlex *ngIf="item.component === 'Input'">
-        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
+        <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false"> {{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
           <input
             nz-input
             [placeholder]="'请输入' + item.queryTitle"
             [formControlName]="item.queryField"
             [attr.id]="item.queryField"
             [disabled]= "item.disabled?item.disabled:false"
+            (ngModelChange)="requiredChange($event)"
           />
         </nz-form-control>
       </nz-form-item>
       <!--数字输入框 InputNumber-->
       <nz-form-item nzFlex *ngIf="item.component === 'InputNumber'">
-        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
+        <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
           <nz-input-number
+            [formControlName]="item.queryField"
             [nzMin]="item.minNum?item.minNum:'-Infinity'"
             [nzMax]="item.minNum?item.minNum:'Infinity'"
             [nzStep]="item.step?item.step:1"
             [nzDisabled] = "item.disabled?item.disabled:false"
+            (ngModelChange)="requiredChange($event)"
           ></nz-input-number>
         </nz-form-control>
       </nz-form-item>
       <!--日期选择 DatePicker-->
       <nz-form-item nzFlex *ngIf="item.component === 'DatePicker'">
-        <nz-form-label [nzFor]="item.queryField" >{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
+        <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
           <nz-date-picker
             name="date-picker-success"
+            [formControlName]="item.queryField"
             [nzFormat] = "item.format?item.format:'yyyy-MM-dd'"
+            [nzPlaceHolder]="'请选择' + item.queryTitle"
+            (ngModelChange)="requiredChange($event)"
           ></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
       <!--日期范围选择 DateRange-->
       <nz-form-item nzFlex *ngIf="item.component === 'DateRange'">
-        <nz-form-label [nzFor]="item.queryField" style="outline: #3e98db">{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
-          <nz-range-picker [nzFormat] = "item.format?item.format:'yyyy-MM-dd'"></nz-range-picker>
+        <nz-form-label [nzFor]="item.queryField" style="outline: #3e98db" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
+          <nz-range-picker
+            [formControlName]="item.queryField"
+            [nzFormat] = "item.format?item.format:'yyyy-MM-dd'"
+            (ngModelChange)="requiredChange($event)"
+          ></nz-range-picker>
         </nz-form-control>
       </nz-form-item>
       <!--单选 Radio-->
       <nz-form-item nzFlex *ngIf="item.component === 'Radio'">
-        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
-          <nz-radio-group>
+        <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
+          <nz-radio-group  [formControlName]="item.queryField"  (ngModelChange)="requiredChange($event)">
             <label nz-radio
-                   *ngFor = "let opt of item.componentData"
-                   [nzValue] = "opt.value"
-                   [nzDisabled] = "opt.disabled?opt.disabled:false"
+                   *ngFor="let opt of item.componentData"
+                   [nzValue]="opt.value"
+                   [nzDisabled]="opt.disabled?opt.disabled:false"
             >
               {{opt.title}}
             </label>
@@ -60,15 +70,16 @@
       </nz-form-item>
       <!--下拉框 Select-->
       <nz-form-item nzFlex *ngIf="item.component === 'Select'">
-        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
+        <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
           <nz-select
             style="width: 120px;"
-            nzAllowClear
-            [nzPlaceHolder] = "'请输入' + item.queryTitle"
+            [formControlName]="item.queryField"
+            [nzPlaceHolder] = "'请选择' + item.queryTitle"
             [nzAllowClear] = "item.allowClear?item.allowClear:true"
             [nzDisabled] = "item.disabled?item.disabled:false"
             [nzMode] = "item.mode?item.mode:'default'"
+            (ngModelChange)="requiredChange($event)"
           >
             <nz-option
               *ngFor="let opt of item.componentData"
@@ -81,12 +92,14 @@
       </nz-form-item>
       <!--复选框 CheckBox-->
       <nz-form-item nzFlex *ngIf="item.component === 'CheckBox'">
-        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
+        <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
           <label nz-checkbox
+                 [formControlName]="item.queryField"
                  *ngFor = "let opt of item.componentData"
                  [nzValue] = "opt.value"
                  [nzDisabled] = "opt.disabled?opt.disabled:false"
+                 (ngModelChange)="requiredChange($event)"
           >
             {{opt.title}}
           </label>
@@ -94,16 +107,21 @@
       </nz-form-item>
       <!--级联选择 Cascader-->
       <nz-form-item nzFlex *ngIf="item.component === 'Cascader'">
-        <nz-form-label [nzFor]="item.queryField">{{item.queryTitle}}</nz-form-label>
-        <nz-form-control>
-          <nz-cascader [nzOptions]="item.componentData" (nzChange)="onChanges($event)" [nzPlaceHolder]="'请选择' + item.queryTitle"> </nz-cascader>
+        <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="item.errorTip">
+          <nz-cascader
+            [formControlName]="item.queryField"
+            [nzOptions]="item.componentData"
+            [nzPlaceHolder]="'请选择' + item.queryTitle"
+            (ngModelChange)="requiredChange($event)"
+          > </nz-cascader>
         </nz-form-control>
       </nz-form-item>
     </div>
   </div>
   <div nz-row>
     <div nz-col [nzSpan]="24" class="search-area">
-      <button nz-button [nzType]="'primary'">查询</button>
+      <button nz-button [nzType]="'primary'" (click)="submitForm()">查询</button>
       <button nz-button (click)="resetForm()">重置</button>
       <a class="collapse" (click)="toggleCollapse()">
         折叠
@@ -112,6 +130,4 @@
     </div>
   </div>
 </form>
-<div class="search-result-list">
-  Search Result List
-</div>
+

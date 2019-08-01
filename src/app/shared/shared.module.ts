@@ -15,6 +15,7 @@ import { DfAutoCompleteComponent } from './ng-zorro/df-auto-complete/df-auto-com
 import { DfPaginationComponent } from './ng-zorro/df-pagination/df-pagination.component';
 import { DfSelectFormComponent } from './ng-zorro/df-select-form/df-select-form.component';
 import { DfModalComponent } from './ng-zorro/df-modal/df-modal.component';
+import { DfTreeComponent } from './ng-zorro/df-tree/df-tree.component';
 
 const COMPONENTS = [
   DfTableComponent,
@@ -22,6 +23,7 @@ const COMPONENTS = [
   DfPaginationComponent,
   DfSelectFormComponent,
   DfModalComponent,
+  DfTreeComponent
 ];
 const SHAREDS = [
   CommonModule,

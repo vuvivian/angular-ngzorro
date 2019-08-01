@@ -1,9 +1,17 @@
 <app-df-select-form
   [searchInfo]="searchInfo"
-
+  (getSubmit)="search($event)"
+  (reset)="clear()"
+  (getChange)="watch($event)"
 ></app-df-select-form>
-
-<app-df-modal
-[modalInfo]="modalInfo"
->
-</app-df-modal>
+<div nz-row class="search-result-list" >
+    <div nz-col nzSpan="12" class="search-param">
+      <p>查询条件</p>
+      {{this.searchParam}}
+    </div>
+    <div nz-col nzSpan="12" class="search-result">
+      <p>查询结果</p>
+      {{this.searchResult}}
+    </div>
+  </div>
+<app-df-modal [modalInfo]="modalInfo"></app-df-modal>
