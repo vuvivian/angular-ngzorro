@@ -14,7 +14,7 @@ import {DfModal} from "../../../interface/dfModal";
 export class FormComponent implements OnInit {
   modalInfo: DfModal = {
     isVisible: false,
-    title: '测试'
+    title: '2测试'
   };
   searchInfo = {
     senior: [
@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
         queryField: 'createTime',
         component: 'DatePicker', // 日期选择框
         required:true,
-        errorTip:'请选择日期'
+        errorTip:'请选择日期',
       },
       {
         queryTitle: '输入框',
@@ -31,19 +31,24 @@ export class FormComponent implements OnInit {
         component: 'Input', // 输入框
         defaultValue: '测试',
         required:true,
-        errorTip:'请输入'
+        errorTip:'请输入',
+        // rule:email
       },
       {
         queryTitle: '选择',
         queryField: 'select',
         component: 'Select',
         componentData: [{ value: '0', title: '未删除',disabled:true}, { value: '1', title: '已删除' }],
+        required:true,
+        errorTip:'请选择日期'
       },
       {
         queryTitle: '复选',
         queryField: 'checkBox',
         component: 'CheckBox',
         componentData: [{ value: 'app', title: 'app',disabled:true}, { value: 'pc', title: 'pc' }],
+        required:true,
+        errorTip:'请选择日期'
       },
       {
         queryTitle: '多选',
@@ -51,6 +56,8 @@ export class FormComponent implements OnInit {
         component: 'Select', // 多选框
         mode:'multiple',
         componentData: [{ value: '0', title: '未删除' }, { value: '1', title: '已删除' }],
+        required:true,
+        errorTip:'请选择日期'
       },
       {
         queryTitle: '级联',
@@ -95,22 +102,30 @@ export class FormComponent implements OnInit {
               }
             ]
           }],
+        required:true,
+        errorTip:'请选择日期'
       },
       {
         queryTitle: '数字',
         queryField: 'inputNumber',
         component: 'InputNumber', // 多选框
+        required:true,
+        errorTip:'请选择日期'
       },
       {
         queryTitle: '期间',
         queryField: 'dateRange',
         component: 'DateRange', // 多选框
+        required:true,
+        errorTip:'请选择日期'
       },
       {
         queryTitle: '单选',
         queryField: 'sex',
         component: 'Radio',
         componentData: [{ value: 'boy', title: '男' }, { value: 'girl', title: '女' }],
+        required:true,
+        errorTip:'请选择日期'
       },]
   };
   searchParam = null;
@@ -129,10 +144,10 @@ export class FormComponent implements OnInit {
     this.searchParam = null;
     this.searchResult = '重置成功'
   }
-
+e
   /* 监听 */
   watch(e): void{
-    this.searchParam = e;
-    this.searchResult = '表单变更'
+    this.searchParam = JSON.stringify(e);
+    this.searchResult =  `${Object.keys(e)} 变更`
   }
 }

@@ -27,7 +27,7 @@ export class TableComponent implements OnInit {
       {
       key:"name",
       title:"姓名",
-        showFilter:true,
+      showFilter:true,
     },{
       key:"age",
       title:"年龄",

@@ -30,11 +30,17 @@ export class DfSelectFormComponent implements OnInit {
         this.searchInfo.senior[i].queryField,
         new FormControl(
           this.searchInfo.senior[i].defaultValue,
-          this.searchInfo.senior[i].required?Validators.required:null
+          this.searchInfo.senior[i].required?Validators.required:null,
         )
       );
     }
   }
+
+  /* 表单验证 */
+  confirmationValidator =(control: FormControl): { [s: string]: boolean }  =>{
+    console.log('control',control);
+    return {}
+  };
 
   /* 提交表单 */
   submitForm() {
@@ -43,12 +49,7 @@ export class DfSelectFormComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
     if (this.validateForm.valid) {
-      console.log('this.validateForm.value', this.validateForm.value);
-      console.log('成功', this.validateForm);
-      debugger;
       this.getSubmit.emit(this.validateForm.value);
-    } else {
-      console.log('失败', this.validateForm);
     }
   }
 
@@ -59,8 +60,11 @@ export class DfSelectFormComponent implements OnInit {
   }
 
   /* FormItem 变更事件 */
-  requiredChange(required: boolean): void {
-    this.getChange.emit(required);
+  requiredChange(field:string, required: boolean): void {
+    console.log(field, required);
+    const param = {};
+      param[field] = required;
+    this.getChange.emit(param);
   }
 
   toggleCollapse(): void {

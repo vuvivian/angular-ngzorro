@@ -11,7 +11,7 @@
             [formControlName]="item.queryField"
             [attr.id]="item.queryField"
             [disabled]= "item.disabled?item.disabled:false"
-            (ngModelChange)="requiredChange($event)"
+            (ngModelChange)="requiredChange(item.queryField, $event)"
           />
         </nz-form-control>
       </nz-form-item>
@@ -25,7 +25,7 @@
             [nzMax]="item.minNum?item.minNum:'Infinity'"
             [nzStep]="item.step?item.step:1"
             [nzDisabled] = "item.disabled?item.disabled:false"
-            (ngModelChange)="requiredChange($event)"
+            (ngModelChange)="requiredChange(item.queryField, $event)"
           ></nz-input-number>
         </nz-form-control>
       </nz-form-item>
@@ -38,7 +38,7 @@
             [formControlName]="item.queryField"
             [nzFormat] = "item.format?item.format:'yyyy-MM-dd'"
             [nzPlaceHolder]="'请选择' + item.queryTitle"
-            (ngModelChange)="requiredChange($event)"
+            (ngModelChange)="requiredChange(item.queryField, $event)"
           ></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
@@ -49,7 +49,7 @@
           <nz-range-picker
             [formControlName]="item.queryField"
             [nzFormat] = "item.format?item.format:'yyyy-MM-dd'"
-            (ngModelChange)="requiredChange($event)"
+            (ngModelChange)="requiredChange(item.queryField, $event)"
           ></nz-range-picker>
         </nz-form-control>
       </nz-form-item>
@@ -57,7 +57,7 @@
       <nz-form-item nzFlex *ngIf="item.component === 'Radio'">
         <nz-form-label [nzFor]="item.queryField" [nzRequired] = "item.required?item.required:false">{{item.queryTitle}}</nz-form-label>
         <nz-form-control [nzErrorTip]="item.errorTip">
-          <nz-radio-group  [formControlName]="item.queryField"  (ngModelChange)="requiredChange($event)">
+          <nz-radio-group  [formControlName]="item.queryField" (ngModelChange)="requiredChange(item.queryField, $event)">
             <label nz-radio
                    *ngFor="let opt of item.componentData"
                    [nzValue]="opt.value"
@@ -79,7 +79,7 @@
             [nzAllowClear] = "item.allowClear?item.allowClear:true"
             [nzDisabled] = "item.disabled?item.disabled:false"
             [nzMode] = "item.mode?item.mode:'default'"
-            (ngModelChange)="requiredChange($event)"
+            (ngModelChange)="requiredChange(item.queryField, $event)"
           >
             <nz-option
               *ngFor="let opt of item.componentData"
@@ -99,7 +99,7 @@
                  *ngFor = "let opt of item.componentData"
                  [nzValue] = "opt.value"
                  [nzDisabled] = "opt.disabled?opt.disabled:false"
-                 (ngModelChange)="requiredChange($event)"
+                 (ngModelChange)="requiredChange(item.queryField, $event)"
           >
             {{opt.title}}
           </label>
@@ -113,7 +113,7 @@
             [formControlName]="item.queryField"
             [nzOptions]="item.componentData"
             [nzPlaceHolder]="'请选择' + item.queryTitle"
-            (ngModelChange)="requiredChange($event)"
+            (ngModelChange)="requiredChange(item.queryField, $event)"
           > </nz-cascader>
         </nz-form-control>
       </nz-form-item>
